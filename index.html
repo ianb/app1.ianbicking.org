@@ -28,7 +28,11 @@ $(function () {
         $('#unknown').hide();
         $('#uninstalled').hide();
         $('#installed').show();
-        $('#record').text(JSON.stringify(this.result, null, true));
+        try {
+          $('#record').text(JSON.stringify(this.result, null, true));
+        } catch (e) {
+          $('#record').text('Error serializing record: ' + e);
+        }
       } else {
         $('#unknown').hide();
         $('#installed').hide();
