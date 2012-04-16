@@ -14,7 +14,9 @@
     margin-bottom: 1em;
   }
   pre {
+    border: 1px solid #999;
     overflow: auto;
+    width: 100%;
   }
   </style>
   <script>
@@ -26,7 +28,7 @@ $(function () {
         $('#unknown').hide();
         $('#uninstalled').hide();
         $('#installed').show();
-        $('#record').text(JSON.stringify(this.result, true));
+        $('#record').text(JSON.stringify(this.result, null, true));
       } else {
         $('#unknown').hide();
         $('#installed').hide();
