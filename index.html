@@ -31,6 +31,11 @@ $(function () {
         var result = {};
         for (var i in this.result) {
           result[i] = this.result[i];
+          try {
+            JSON.stringify(result[i]);
+          } catch (e) {
+            alert('Bad attribute: ' + i);
+          }
         }
         try {
           $('#record').text(JSON.stringify(result, null, true));
