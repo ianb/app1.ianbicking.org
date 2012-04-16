@@ -6,8 +6,12 @@
   <style>
   .status {
     border: 2px solid #000;
-    background-color: #999;
+    background-color: #ddd;
     display: inline;
+    padding: 4px;
+  }
+  div {
+    margin-bottom: 1em;
   }
   </style>
   <script>
@@ -19,10 +23,12 @@ $(function () {
         $('#unknown').hide();
         $('#uninstalled').hide();
         $('#installed').show();
+        $('#record').text(JSON.stringify(this.result));
       } else {
         $('#unknown').hide();
         $('#installed').hide();
         $('#uninstalled').show();
+        $('#record').text('');
       }
     };
     pending.onerror = function () {
@@ -69,5 +75,7 @@ $(function () {
   <div>To install or reinstall:
   <button type="button" id="install">Install</button>
   </div>
+
+  <pre id="record"></pre>
   
 </body>
