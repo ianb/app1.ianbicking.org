@@ -41,7 +41,7 @@ $(function () {
           }
         }
         try {
-          $('#record').text(JSON.stringify(result, null, true));
+          $('#record').text(JSON.stringify(result, null, '  '));
         } catch (e) {
           $('#record').text('Error serializing record: ' + e);
         }
