@@ -1,1 +1,72 @@
-Hi, this is app1.ianbicking.org
+<html>
+ <head>
+  <title>app1</title>
+  <script src="https://myapps.mozillalabs.com/jsapi/include.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <style>
+  .status {
+    border: 2px solid #000;
+    background-color: #999;
+  }
+  </style>
+  <script>
+$(function () {
+  function setInstalled() {
+    var pending = navigator.mozApps.getSelf();
+    pending.onsuccess = function () {
+      if (this.result) {
+        $('#unknown').hide();
+        $('#uninstalled').hide();
+        $('#installed').show();
+      } else {
+        $('#unknown').hide();
+        $('#installed').hide();
+        $('#uninstalled').show();
+      }
+    };
+    pending.onerror = function () {
+      alert('Error in getSelf: ' + this.error);
+    };
+  }
+  
+  setInstalled();
+  
+  $('#install').click(function () {
+    var pending = navigator.mozApps.install('/manifest.webapp');
+    pending.onsuccess = function () {
+      setInstalled();
+    };
+    pending.onerror = function () {
+      if (this.error == 'DENIED' || this.error.name == 'DENIED') {
+        return;
+      }
+      alert('Error in install: ' + this.error);
+    };
+  });
+});
+      
+  </script>
+  
+ </head>
+ <body>
+  <div>
+    Welcome to <code>app1</code>
+  </div>
+  
+  <div>The manifest is located at <a
+  href="http://app1.ianbicking.org/manifest.webapp">http://app1.ianbicking.org/manifest.webapp</a>
+  </div>
+  
+  <div>Installation status is:
+  
+  <div id="unknown" class="status">Unknown</div>
+  <div id="installed" class="status" style="display: none">Installed</div>
+  <div id="uninstalled" class="status" style="display: none">Uninstalled</div>
+  
+  </div>
+
+  <div>To install or reinstall:
+  <button type="button" id="install">Install</button>
+  </div>
+  
+</body>
