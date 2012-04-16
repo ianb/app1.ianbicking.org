@@ -34,7 +34,7 @@ $(function () {
           try {
             JSON.stringify(result[i]);
           } catch (e) {
-            alert('Bad attribute: ' + i);
+            alert('Bad attribute: ' + i + ' typeof: ' + (typeof i));
           }
         }
         try {
