@@ -28,8 +28,12 @@ $(function () {
         $('#unknown').hide();
         $('#uninstalled').hide();
         $('#installed').show();
+        var result = {};
+        for (var i in this.result) {
+          result[i] = this.result[i];
+        }
         try {
-          $('#record').text(JSON.stringify(this.result, null, true));
+          $('#record').text(JSON.stringify(result, null, true));
         } catch (e) {
           $('#record').text('Error serializing record: ' + e);
         }
