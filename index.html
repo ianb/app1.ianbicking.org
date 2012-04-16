@@ -13,6 +13,9 @@
   div {
     margin-bottom: 1em;
   }
+  pre {
+    overflow: auto;
+  }
   </style>
   <script>
 $(function () {
@@ -23,7 +26,7 @@ $(function () {
         $('#unknown').hide();
         $('#uninstalled').hide();
         $('#installed').show();
-        $('#record').text(JSON.stringify(this.result));
+        $('#record').text(JSON.stringify(this.result, true));
       } else {
         $('#unknown').hide();
         $('#installed').hide();
