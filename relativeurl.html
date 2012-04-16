@@ -44,8 +44,7 @@ $(function () {
   setInstalled();
   
   $('#install').click(function () {
-    var pending = navigator.mozApps.install(location.protocol + '//'
-      + location.host + '/manifest.webapp');
+    var pending = navigator.mozApps.install('/manifest.webapp');
     pending.onsuccess = function () {
       setInstalled();
     };
