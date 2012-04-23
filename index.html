@@ -68,9 +68,8 @@ $(function () {
 
   $('#install').click(function () {
     var name = '/' + (querystring('manifest') || 'manifest.webapp');
-    alert(name);
     var pending = navigator.mozApps.install(location.protocol + '//'
-      + location.host + '/manifest.webapp');
+      + location.host + name);
     pending.onsuccess = function () {
       setInstalled();
     };
