@@ -56,10 +56,18 @@ $(function () {
       alert('Error in getSelf: ' + (this.error.name || this.error));
     };
   }
-  
+
   setInstalled();
-  
+
+  function querystring(key) {
+    var re=new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi');
+    var r=[], m;
+    while ((m=re.exec(document.location.search)) != null) r.push(m[1]);
+    return r;
+  }
+
   $('#install').click(function () {
+    var name = '/' + (querystring('manifest') || 'manifest.webapp');
     var pending = navigator.mozApps.install(location.protocol + '//'
       + location.host + '/manifest.webapp');
     pending.onsuccess = function () {
@@ -72,26 +80,27 @@ $(function () {
       alert('Error in install: ' + (this.error.name || this.error));
     };
   });
+
 });
-      
+
   </script>
-  
+
  </head>
  <body>
   <div>
     Welcome to <code>app1</code>
   </div>
-  
+
   <div>The manifest is located at <a
   href="http://app1.ianbicking.org/manifest.webapp">http://app1.ianbicking.org/manifest.webapp</a>
   </div>
-  
+
   <div>Installation status is:
-  
+
   <div id="unknown" class="status">Unknown</div>
   <div id="installed" class="status" style="display: none">Installed</div>
   <div id="uninstalled" class="status" style="display: none">Uninstalled</div>
-  
+
   </div>
 
   <div>To install or reinstall:
@@ -99,5 +108,13 @@ $(function () {
   </div>
 
   <pre id="record"></pre>
-  
+
+  <div>
+    Other versions:
+    <ol>
+      <li><a href="/">Normal version</a></li>
+      <li><a href="/?manifest=manifest_bad_installs_allowed_from.webapp">Blocked installs_allowed_from</a></li>
+    </ol>
+  </div>
+
 </body>
