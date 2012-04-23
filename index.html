@@ -81,6 +81,22 @@ $(function () {
     };
   });
 
+  $('#uninstall').click(function () {
+    var pending = navigator.mozApps.getSelf();
+    pending.onsuccess = function () {
+      var uninstall = this.result.uninstall();
+      uninstall.onsuccess = function () {
+        setInstalled();
+      };
+      uninstall.onerror = function () {
+        alert('Error in uninstall: ' + (this.error.name || this.error));
+      };
+    };
+    pending.onerror = function () {
+      alert('Error in getSelf: ' + (this.error.name || this.error));
+    };
+  });
+
 });
 
   </script>
@@ -105,6 +121,7 @@ $(function () {
 
   <div>To install or reinstall:
   <button type="button" id="install">Install</button>
+  <button type="button" id="uninstall">Uninstall</button>
   </div>
 
   <pre id="record"></pre>
