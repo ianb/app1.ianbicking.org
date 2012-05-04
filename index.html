@@ -75,6 +75,7 @@ $(function () {
       setInstalled();
     };
     pending.onerror = function () {
+      $('#record').text("Error: " + this.error + "\n  name: " + (this.error && this.error.name));
       if (this.error == 'DENIED' || this.error.name == 'DENIED') {
         return;
       }
