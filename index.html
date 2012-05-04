@@ -73,7 +73,7 @@ $(function () {
     var pending = navigator.mozApps.install(url);
     $('#record').text('started installation: ' + url);
     pending.onsuccess = function () {
-      #('#record').text('onsuccess called: ' + this.result');
+      #('#record').text('onsuccess called: ' + this.result);
       setInstalled();
     };
     pending.onerror = function () {
