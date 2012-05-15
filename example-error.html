@@ -20,6 +20,13 @@ function tryError3() {
   };
   req.send();
 }
+
+function tryError4() {
+  var req = navigator.mozApps.getSelf();
+  req.onsuccess = function () {
+    throw 'getSelf.onsuccess error';
+  };
+}
 </script>
     </head>
   <body>
