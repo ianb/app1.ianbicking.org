@@ -16,6 +16,7 @@ function tryError3() {
   var req = new XMLHttpRequest();
   req.open('GET', '/');
   req.onreadystatechange = function () {
+    console.log('In onreadystatechange');
     throw 'onreadystatechange error';
   };
   req.send();
@@ -24,11 +25,12 @@ function tryError3() {
 function tryError4() {
   var req = navigator.mozApps.getSelf();
   req.onsuccess = function () {
+    console.log('In onsuccess');
     throw 'getSelf.onsuccess error';
   };
 }
 </script>
     </head>
   <body>
-    To run this example, open the web console and run either <code>tryError1()</code> (simple error, should work), <code>tryError2()</code> (error in setTimeout function) or <code>tryError3()</code> (error in XMLHttpRequest onreadystatechange).
+    To run this example, open the web console and run either <code>tryError1()</code> (simple error, should work), <code>tryError2()</code> (error in setTimeout function) or <code>tryError3()</code> (error in XMLHttpRequest onreadystatechange) or <code>tryError4()</code> (error in navigator.mozApps.getSelf().onsuccess).
     </body></html>
