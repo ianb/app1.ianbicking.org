@@ -1,0 +1,27 @@
+<html><head>
+    <script>
+function tryError1() {
+  console.log('Starting tryError1()');
+  throw 'This is an exception';
+}
+
+function tryError2() {
+  console.log('Error in setTimeout');
+  setTimeout(function () {
+    throw 'setTimeout exception';
+  }, 10);
+}
+
+function tryError3() {
+  var req = new XMLHttpRequest();
+  req.open('GET', '/');
+  req.onreadystatechange = function () {
+    throw 'onreadystatechange error';
+  };
+  req.send();
+}
+</script>
+    </head>
+  <body>
+    To run this example, open the web console and run either <code>tryError1()</code> (simple error, should work), <code>tryError2()</code> (error in setTimeout function) or <code>tryError3()</code> (error in XMLHttpRequest onreadystatechange).
+    </body></html>
