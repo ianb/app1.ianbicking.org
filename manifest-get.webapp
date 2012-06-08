@@ -1,0 +1,23 @@
+{
+  "name": "Fancy app1",
+  "description": "This is just a test app, to be used for testing and whatnot.\n\nPay no attention!",
+  "icons": {
+    "16": "/16.png",
+    "32": "/32.png",
+    "48": "/48.png",
+    "64": "/64.png",
+    "128": "/128.png"
+  },
+  "launch_path": "/index.html?with-get-arg=1",
+  "developer": {
+    "name": "Mozilla Labs / Ian Bicking",
+    "url": "http://ianbicking.org"
+  },
+  "installs_allowed_from": ["*"],
+  "default_locale": "en",
+  "locales": {
+    "es": {
+      "name": "app de lujo"
+    }
+  }
+}
