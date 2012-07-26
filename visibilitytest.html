@@ -3,6 +3,7 @@
     <title>Visibility test</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script>
+    var now = Date.now();
     // Browser compatibility:
     var hidden, visibilityChange;
     if (typeof document.hidden !== "undefined") {
@@ -28,14 +29,14 @@
       var state = document[visibilityState];
       var text = $('#output').text();
       text += '\n';
-      text += visibilityChange + ' hidden: ' + isHidden + ' state: ' + state + ' at ' + (new Date());
+      text += visibilityChange + ' hidden: ' + isHidden + ' state: ' + state + ' at ' + (Date.now() - now);
       $('#output').text(text);
     }, false);
     </script>
   </head>
   <body>
 
-    <pre id="output">Output:</pre>
+    <pre style="border: 1px solid #000" id="output">Output:</pre>
 
 <div>To test state changes, switch to or from this page; each even will be displayed in the box above.</div>
 
